@@ -25,8 +25,8 @@ public class ClienteSocket {
 
     private void receberResposta() {
         try {
-            String linha;
-            while (!(linha = in.readLine()).equals("FIM")) {
+            String linha = in.readLine();
+            while (linha != null) {
                 System.out.println(linha);
             }
         } catch (IOException e) {
@@ -37,6 +37,8 @@ public class ClienteSocket {
     public void fechar() {
         try {
             socket.close();
-        } catch (IOException ignored) {}
+        } catch (IOException e) {
+            System.out.print("Erro ao fechar conexão");
+        }
     }
 }
